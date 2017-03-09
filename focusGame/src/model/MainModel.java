@@ -179,7 +179,7 @@ public class MainModel extends Observable {
 				
 			}
 			
-		
+		//this is lb
 		private int heuristicTwo(Node currentNode) {
 			// TODO Auto-generated method stub
 			return 0;
