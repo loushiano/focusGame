@@ -133,8 +133,13 @@ public class GUI implements Observer{
 	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		if(arg1 instanceof View){
 		View v = (View)arg1;
 		drawCircle(v.getCircle());
+		}else{
+			Circle c=(Circle)arg1;
+			System.out.println(circlePanel.getCircles().remove(c));
+		}
 	}
 	
 	

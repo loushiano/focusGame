@@ -49,6 +49,9 @@ public class Circle {
 		return Math.PI * Math.pow(this.radius, 2);
 
 	}
+	public void changeCenter(Point p){
+		center=p;
+	}
 	
 
 	/*

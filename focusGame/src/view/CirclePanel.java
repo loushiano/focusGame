@@ -69,10 +69,8 @@ public class CirclePanel extends JPanel {
 	public void addCircle(Circle circle) {
 		if(!circles.contains(circle)){
 		circles.add(circle);
-		}else {
-			circles.remove(circle);
-			addCircle(circle);
 		}
+		
 	}
 	/*
 	 * invokes repaint to show all missing shapes
