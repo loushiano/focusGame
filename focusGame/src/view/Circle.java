@@ -44,13 +44,19 @@ public class Circle {
 	 * @return the are of this circle
 	 */
 
+	public Circle(Circle emptyCircle) {
+		this.center=new Point((int)emptyCircle.getCenter().getX(),(int)emptyCircle.getCenter().getY());
+		this.radius=RADIUS;
+		color=emptyCircle.getColor();
+	}
+
 	public double getArea() {
 
 		return Math.PI * Math.pow(this.radius, 2);
 
 	}
 	public void changeCenter(Point p){
-		center=p;
+		center=new Point((int)p.getX(),(int)p.getY());
 	}
 	
 
@@ -97,7 +103,7 @@ public class Circle {
 	// "Circle{center=(40, 100),radius=100}".
 
 	public String toString() {
-		return "Circle{center=" + this.center + ",radius=" + this.radius + "}";
+		return "center=" + this.center + "color"+ this.color;
 	}
 	
 	/*
@@ -116,6 +122,7 @@ public class Circle {
 
     	
     	g2.setColor(Color.BLACK);
+    	
     	g2.drawOval((int)center.getX() - radius, (int)center.getY() - radius, 2 * radius, 2 * radius);
     	
     	g2.setColor(color);
@@ -176,5 +183,10 @@ public class Circle {
 	}
 	public void setColor(Color c){
 		color =c;
+	}
+
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return color;
 	}
 }

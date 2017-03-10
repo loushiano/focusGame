@@ -1,10 +1,13 @@
 package model;
 
+import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Node {
 	private Node parent;
 	private HashSet<Node> children;
+	
 	private View[][] state;
 	private int depth=0;
 	private int minMax;
@@ -13,11 +16,14 @@ public class Node {
 		setParent(p);
 		children= new HashSet<Node>();
 		this.setState(state);
+		
+		
 	}
 	
 	public void addChild(Node n){
 		children.add(n);
 	}
+	
 
 	public Node getParent() {
 		return parent;
@@ -26,7 +32,9 @@ public class Node {
 	public void setParent(Node parent) {
 		this.parent = parent;
 	}
+	
 
+	
 	public int getMinMax() {
 		return minMax;
 	}
@@ -67,6 +75,35 @@ public class Node {
 
 	public void setHeuristics(int heuristics) {
 		this.heuristics = heuristics;
+	}
+
+	public int getCapturedTwo() {
+		int count=0;
+		for(int e=0;e<64;e++){
+			if(state[e/8][e%8]!=null){
+			count+=state[e/8][e%8].getCapturedTwo();
+			}
+		}
+		return count;
+	}
+
+	public int getCapturedOne() {
+		int count=0;
+		for(int e=0;e<64;e++){
+			if(state[e/8][e%8]!=null){
+			count+=state[e/8][e%8].getCapturedOne();
+		}}
+		return count;
+	}
+
+	public int countPieces() {
+		int count=0;
+		for(int e=0;e<64;e++){
+			if(state[e/8][e%8]!=null){
+			
+				count+=state[e/8][e%8].getCircles().size();
+		}}
+		return count;
 	}
 	
 }

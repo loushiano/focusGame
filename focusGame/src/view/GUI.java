@@ -136,9 +136,33 @@ public class GUI implements Observer{
 		if(arg1 instanceof View){
 		View v = (View)arg1;
 		drawCircle(v.getCircle());
-		}else{
+		}else if(arg1 instanceof Circle){
 			Circle c=(Circle)arg1;
 			System.out.println(circlePanel.getCircles().remove(c));
+		}else if(arg1 instanceof String){
+		promptUser((String)arg1);
+			
+		}
+		
+		
+		else {
+			View[][] v =(View[][])arg1;
+			circlePanel.getCircles().clear();
+			int count=0;
+			for(int i=0;i<8;i++){
+				for(int j=0;j<8;j++){
+					if(v[i][j]!=null){
+						count++;
+						
+							
+						drawCircle(v[i][j].getCircle());
+						//System.out.println(count);
+						
+						
+					}
+				}
+			}
+			
 		}
 	}
 	
@@ -167,5 +191,10 @@ public class GUI implements Observer{
 		circlePanel.draw();
 		
 	}
+	public void promptUser(String string) {
+		JOptionPane.showMessageDialog(frame,string);
+		
+	}
+
 	
 }
